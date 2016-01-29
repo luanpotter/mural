@@ -1,0 +1,22 @@
+{
+  "name": "mural",
+  "version": "1.0.0",
+  "description": "Mural",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luanpotter/mural.git"
+  },
+  "keywords": [
+    "mural"
+  ],
+  "author": "Luan Nico <luannico27@gmail.com> (http://luan.xyz/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/luanpotter/mural/issues"
+  },
+  "homepage": "https://github.com/luanpotter/mural#readme"
+}
