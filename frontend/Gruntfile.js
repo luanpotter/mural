@@ -27,7 +27,7 @@ module.exports = function (grunt) {
 			},
 			prod: {
 				options: {
-					create: ['build/unpacked-dev/js']
+					create: ['build/prod']
 				}
 			}
 		},
