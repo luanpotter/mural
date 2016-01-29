@@ -11,7 +11,7 @@ public class MuralTest extends EndpointTestCase {
     @Test
     public void testCreate() {
         // TODO Auto-generated method stub
-        String json=post("/murals", "{}");
+        String json=post("/murais", "{}");
         Mural mural=from(json, Mural.class);
 
         assertNotNull(mural);
