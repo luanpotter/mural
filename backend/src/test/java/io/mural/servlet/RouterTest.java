@@ -2,7 +2,7 @@ package io.mural.servlet;
 
 import org.junit.Test;
 
-import static io.mural.servlet.Pages.*;
+import static io.mural.servlet.Page.*;
 import static org.junit.Assert.assertEquals;
 
 public class RouterTest {
@@ -11,8 +11,8 @@ public class RouterTest {
     public void testHome() {
         Router router = new Router();
 
-        assertEquals(Pages.HOME, router.route(""));
-        assertEquals(Pages.HOME, router.route("/"));
+        assertEquals(Page.HOME, router.route(""));
+        assertEquals(Page.HOME, router.route("/"));
     }
 
     @Test

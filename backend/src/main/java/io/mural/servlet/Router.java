@@ -1,14 +1,14 @@
 package io.mural.servlet;
 
-import static io.mural.servlet.Pages.MURAL;
-import static io.mural.servlet.Pages.POST;
+import static io.mural.servlet.Page.MURAL;
+import static io.mural.servlet.Page.POST;
 
 public class Router {
 
-    public Pages route(String path) {
+    public Page route(String path) {
         String[] split = path.split("/");
         if (split.length <= 1) {
-            return Pages.HOME;
+            return Page.HOME;
         }
         if (split.length == 2) {
             return MURAL;
@@ -16,7 +16,7 @@ public class Router {
         if (split.length == 3 && split[2].equals("post")) {
             return POST;
         }
-        return Pages.NOT_FOUND;
+        return Page.NOT_FOUND;
     }
 
 }

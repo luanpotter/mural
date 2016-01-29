@@ -36,6 +36,11 @@
             <version>${yawp.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-stubs</artifactId>
+            <version>1.9.25</version>
+        </dependency>
     </dependencies>
 
     <build>

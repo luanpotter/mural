@@ -44,6 +44,15 @@
         <url-pattern>/fixtures/delete_all</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RouterServlet</servlet-name>
+        <servlet-class>io.mural.servlet.RouterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RouterServlet</servlet-name>
+        <url-pattern>/murais/*</url-pattern>
+    </servlet-mapping>
+
     <!-- security-constraint>
         <web-resource-collection>
             <web-resource-name>mural-all</web-resource-name>
