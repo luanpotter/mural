@@ -1,28 +1,29 @@
-(function(t, yawp, fx) {
+(function (t, yawp, fx) {
 
-	yawp.config(function(c) {
-		c.baseUrl('/api');
-	});
+    yawp.config(function (c) {
+        c.baseUrl('/api');
+    });
 
-	fx.config(function(c) {
-		c.baseUrl('/fixtures');
-		c.resetUrl('/fixtures/delete_all');
+    fx.config(function (c) {
+        c.baseUrl('/fixtures');
+        c.resetUrl('/fixtures/delete_all');
 
-		c.bind('person', '/people');
-	});
+        c.bind('mural', '/murais');
+        c.bind('post', '/posts');
+    });
 
-	function moduledef(module, options) {
-		t.module(module);
-		if (options.testStart) {
-			t.testStart(function(details) {
-				if (details.module != module) {
-					return;
-				}
-				options.testStart();
-			});
-		}
-	}
+    function moduledef(module, options) {
+        t.module(module);
+        if (options.testStart) {
+            t.testStart(function (details) {
+                if (details.module != module) {
+                    return;
+                }
+                options.testStart();
+            });
+        }
+    }
 
-	t.moduledef = moduledef;
+    t.moduledef = moduledef;
 
 })(QUnit, yawp, yawp.fixtures);

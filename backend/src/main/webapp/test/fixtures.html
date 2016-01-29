@@ -4,11 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>Tests - mural</title>
-    <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.15.0.css">
 </head>
 <body>
-<div id="qunit"></div>
-<div id="qunit-fixture"></div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//code.jquery.com/qunit/qunit-1.15.0.js"></script>
@@ -21,6 +18,17 @@
 <script src="fixtures/murais.js"></script>
 <script src="fixtures/posts.js"></script>
 
-<script src="people_test.js"></script>
+<script>
+    (function (fx) {
+
+        fx.reset();
+        fx.mural('mural-da-carol');
+        fx.post('carol1');
+        fx.post('carol2');
+        fx.post('carol3');
+
+    })(yawp.fixtures);
+</script>
+
 </body>
 </html>
