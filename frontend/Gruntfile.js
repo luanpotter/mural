@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 	for (var i = 0; i < files.length; i++) {
 		file = files[i];
 		fileMaps.browserify['build/dev/js/' + file] = 'src/js/' + file;
-		fileMaps.uglify['build/prod/js/' + file] = 'build/dist/js/' + file;
+		fileMaps.uglify['build/prod/js/' + file] = 'build/dev/js/' + file;
 	}
 
 	grunt.initConfig({
@@ -35,9 +35,7 @@ module.exports = function (grunt) {
 		jshint: {
 			options: grunt.file.readJSON('lint-options.json'), // see http://www.jshint.com/docs/options/
 			all: {
-				src: ['package.json', 'lint-options.json', 'Gruntfile.js', 'src/**/*.js',
-					'src/**/*.json'
-				]
+				src: ['package.json', 'lint-options.json', 'Gruntfile.js', 'src/**/*.js', 'src/**/*.json']
 			}
 		},
 
@@ -108,7 +106,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', ['jshint', 'mochaTest']);
 	grunt.registerTask('test-cont', ['test', 'watch']);
 
-	grunt.registerTask('default', ['clean', 'test', 'mkdir:dev', 'copy:main', 'mkdir:prod', 'browserify', 'copy:prod']);
-	grunt.registerTask('dist', ['default', 'uglify']);
-
+	grunt.registerTask('dev', ['clean', 'test', 'mkdir:dev', 'copy:main', 'browserify']);
+	grunt.registerTask('prod', ['default', 'mkdir:prod', 'copy:prod', 'uglify']);
+	grunt.registerTask('default', ['dev']);
 };
