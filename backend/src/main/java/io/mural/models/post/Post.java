@@ -16,6 +16,8 @@ public class Post {
 	@Index
 	IdRef<Mural> muralId;
 
+	String titulo;
+
 	String nome;
 
 	Tipo tipo;
