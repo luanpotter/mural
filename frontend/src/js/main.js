@@ -23,7 +23,7 @@ window.jQuery(function($) {
         '#c1d5c0' : '#888',
         '#47AE73' : '#fff',
         '#eae7c4' : '#000',
-        '#FB6964' : '#000'
+        '#fb6964' : '#000'
     };
 
     function rgb2hex(rgb) {
@@ -81,11 +81,12 @@ window.jQuery(function($) {
             var color = getBackgroundColor(this);
             yawp(muralId).patch({ color : color });
         });
+        
+        fixWallFontColor($('.container'));
         yawp('/posts').where('muralId', '=', muralId).list(function (posts) {
             posts.forEach(createCard);
         });
     }
-    
-    fixWallFontColor($('.container'));
+ 
     load();
 });
