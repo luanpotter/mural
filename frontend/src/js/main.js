@@ -203,6 +203,7 @@ window.jQuery(function ($) {
                     $('#titulo').html(mural.nome);
                     $('.mural-container').css('background-color', mural.color);
                     console.log('loading', muralId);
+                    $('#mural').html('');
                     loadMural(muralId);
                 }).fail(function () {
                     var loginMuralForm = $(loginMuralTemplateFnc());
