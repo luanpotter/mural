@@ -19,7 +19,9 @@ jQuery(function($) {
         var contentFnc = handlers[post.tipo];
         var content = contentFnc({content: post.conteudo});
         
-        var card = postTemplateFnc({title: post.titulo, content: content});
+        var card = $(postTemplateFnc({title: post.titulo}));
+        $(card).find('.content').append($(content));
+        
         return card;
     }
     
@@ -28,7 +30,7 @@ jQuery(function($) {
         yawp('/posts').where('muralId', '=', '/murais/mural-da-carol').list(function (posts) {
             posts.forEach(function(post) {
                 var card = createCard(post);
-                $('#mural').append($(card));
+                $('#mural').append(card);
              });
         });
     }
