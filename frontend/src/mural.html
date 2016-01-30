@@ -5,6 +5,7 @@
     <script src="/static/js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/colors.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/materialize.css" />    
     <script id="post-template" type="text/x-dot-template">
         <li class="post paint-area" data-post-id="{{! it.id }}">
             <div class="toolbar"><img src="/static/images/delete100.png" class="removeBtn"></div>
@@ -21,12 +22,21 @@
     <script id="post-template-picture" type="text/x-dot-template">
         <img src="{{! it.content}}" />
     </script>
+    
+    <script id="novo-mural-template" type="text/x-dot-template">
+        <div><input id="titulo-novo-mural" type="text" id="titulo" placeholder="Nome do Mural" /></div>
+        <div><input type="password" id="senha" placeholder="Senha" /></div>
+        <div><input type="password" id="confirmar-senha" placeholder="Confirmar Senha" /></div>
+        <div class="botoes">
+            <a id="botao-novo-mural" class="waves-effect waves-light btn">Enviar!</a>
+        </div>
+    </script>
 </head>
 <body>
-    <div class="container paint-area">
+    <div class="mural-container paint-area">
         <div class="content">
             <div class="main clearfix">
-                <h1>Mural da Carol</h1>
+                <h1 id="titulo"></h1>
                 <div class="main clearfix">
                     <ul class="bb-custom-grid" id="mural">
                     </ul>

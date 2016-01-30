@@ -447,6 +447,7 @@ button:focus {
 
 /* Customizer */
 .customizer {
+    display: none;
 	background: #444;
 	position: fixed;
 	top: 50%;

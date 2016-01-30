@@ -8,6 +8,7 @@ window.jQuery(function ($) {
     var textTemplateFnc = doT.template($('#post-template-text').html());
     var videoTemplateFnc = doT.template($('#post-template-video').html());
     var pictureTemplateFnc = doT.template($('#post-template-picture').html());
+    var novoMuralTemplateFnc = doT.template($('#novo-mural-template').html());
 
     var handlers = {
         'TEXTO': textTemplateFnc,
@@ -80,13 +81,8 @@ window.jQuery(function ($) {
         fixCardFontColor(card);
     }
 
-
-    function load() {
-        var muralId = '/murais/mural-da-carol';
-        yawp(muralId).fetch(function (mural) {
-            $('.container').css('background-color', mural.color);
-        });
-        $('.container').on('change', function () {
+    function loadMural(muralId) {
+        $('.mural-container').on('change', function () {
             fixWallFontColor(this);
             var color = getBackgroundColor(this);
             yawp(muralId).patch({
@@ -106,16 +102,47 @@ window.jQuery(function ($) {
             yawp.destroy(id);
         });
 
-        fixWallFontColor($('.container'));
+        fixWallFontColor($('.mural-container'));
         yawp('/posts').where('muralId', '=', muralId).list(function (posts) {
             posts.forEach(createCard);
-            $('.removeBtn').click(function() {
+            $('.removeBtn').click(function () {
                 var post = $(this).closest('.post');
                 var id = post.data('post-id');
                 post.remove();
                 yawp.destroy(id);
             });
             $('.removeBtn').click();
+        });
+    }
+
+    function getMuralId() {
+        var pathArray = window.location.pathname.split('/');
+        return '/murais/' + pathArray[1];
+    }
+
+    function configuraElementosNovoPost(toggle) {
+        $('.customizer').toggle(toggle);
+        $('#newPost').toggle(toggle);
+    }
+
+    function novoMural(muralId) {
+        $('#titulo').html('Novo Mural');
+        configuraElementosNovoPost(false);
+        
+        var novoMuralForm = $(novoMuralTemplateFnc());
+        $('#mural').html(novoMuralForm);
+        $('#titulo-novo-mural').focus();
+    }
+
+    function load() {
+        var muralId = getMuralId();
+        yawp(muralId).fetch(function (mural) {
+            configuraElementosNovoPost(true);
+            $('#titulo').html(mural.nome);
+            $('.mural-container').css('background-color', mural.color);
+            loadMural(muralId);
+        }).fail(function () {
+            novoMural(muralId);
         });
     }
 
