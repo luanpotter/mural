@@ -10,21 +10,24 @@ import io.yawp.repository.annotations.Text;
 @Endpoint(path = "/posts")
 public class Post {
 
-	@Id
-	IdRef<Post> id;
+    @Id
+    IdRef<Post> id;
 
-	@Index
-	IdRef<Mural> muralId;
+    @Index
+    IdRef<Mural> muralId;
 
-	String titulo;
+    String titulo;
 
-	String nome;
+    String nome;
 
-	Tipo tipo;
+    Tipo tipo;
 
-	String color;
+    String color;
 
-	@Text
-	String conteudo;
+    @Index
+    Integer order;
+
+    @Text
+    String conteudo;
 
 }
