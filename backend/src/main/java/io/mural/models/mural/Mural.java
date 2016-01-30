@@ -31,7 +31,7 @@ public class Mural implements MuralFacade {
 	}
 
 	@Override
-	public String getCor() {
+	public String getColor() {
 		return color;
 	}
 }

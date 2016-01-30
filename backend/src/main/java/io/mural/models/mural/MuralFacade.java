@@ -8,5 +8,5 @@ public interface MuralFacade {
 
 	public String getNome();
 
-	public String getCor();
+	public String getColor();
 }
