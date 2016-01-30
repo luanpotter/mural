@@ -10,7 +10,7 @@ public enum Page {
     }, NOT_FOUND {
         @Override
         public String path() {
-            return "404.html";
+            return "/static/404.html";
         }
     }, HOME {
         @Override
