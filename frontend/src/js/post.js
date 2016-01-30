@@ -1,5 +1,6 @@
 window.jQuery = require('jquery');
 var yawp = require('yawp-cli');
+require('trix');
 
 window.jQuery(function($) {
     var voltar = function () {
