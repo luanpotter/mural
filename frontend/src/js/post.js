@@ -20,7 +20,8 @@ window.$(function($) {
     $('#enviar').on('click', function () {
         yawp('/posts').create({
             muralId : '/murais/mural-da-carol',
-            titulo : $('#nome').val(),
+            nome : $('#nome').val(),
+            titulo : $('#titulo').val(),
             tipo : $('#tipo').val().toUpperCase(),
             conteudo : $('#tipo').val() === 'Texto' ? $('#conteudo').val() : $('#url').val()
         }).done(function () {
