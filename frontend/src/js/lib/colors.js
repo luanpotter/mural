@@ -13,7 +13,7 @@
 	var docElem = window.document.documentElement,
 		// transition end event name
 		transEndEventNames = { 'WebkitTransition': 'webkitTransitionEnd', 'MozTransition': 'transitionend', 'OTransition': 'oTransitionEnd', 'msTransition': 'MSTransitionEnd', 'transition': 'transitionend' },
-		transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ];
+		transEndEventName = transEndEventNames[ 'transition' ];
 
 	function scrollX() { return window.pageXOffset || docElem.scrollLeft; }
 	function scrollY() { return window.pageYOffset || docElem.scrollTop; }
@@ -45,10 +45,10 @@
 	}
 
 	function init() {
-		document.querySelector('button.info-close').addEventListener('click', function() {
-			var info = document.querySelector('.info-wrap');
-			info.parentNode.removeChild(info);
-		});
+//		document.querySelector('button.info-close').addEventListener('click', function() {
+//			var info = document.querySelector('.info-wrap');
+//			info.parentNode.removeChild(info);
+//		});
 
 		// target elements with the "drag-element" class
 		interact('.drag-element').draggable({

@@ -374,7 +374,7 @@ ul.bb-custom-grid li:after {
     left: 10px;
     width: 50%;
     height: 20%;
-    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+/*    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);*/
     -webkit-transform: rotate(-3deg);
     -moz-transform: rotate(-3deg);
     -ms-transform: rotate(-3deg);
