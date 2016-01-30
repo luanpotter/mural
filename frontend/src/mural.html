@@ -3,33 +3,35 @@
     <head>
         <title>Mural</title>
         <script src="/static/js/main.js"></script>
-        <link href="/static/css/main.css" rel="stylesheet" type="text/css">
-        
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/mural2.css" />
         <script id="post-template" type="text/x-dot-template">
-            <div class="post">
-                <a href="#">
-                    <h2>{{! it.title}}</h2>
-                    <section class="content">{{! it.content}}</section>
-                </a>
-            </div>
+            <li>
+                <h3>{{! it.title}}</h3>
+                <div class="bb-bookblock">{{! it.content}}</div>
+            </li>
         </script>
-        
         <script id="post-template-text" type="text/x-dot-template">
             <p>{{! it.content}}</p>
         </script>
-        
         <script id="post-template-video" type="text/x-dot-template">
             <p>{{! it.content}}</p>
         </script>
-        
         <script id="post-template-picture" type="text/x-dot-template">
             <p>{{! it.content}}</p>
         </script>
     </head>
 
     <body>
-        <div id="main">Hi there</div>
-        <div id="mural" />
+        <div class="container">
+            <header>
+                <h1>Mural da Carol</h1>
+            </header>
+            <div class="main clearfix">
+                <ul class="bb-custom-grid" id="mural">
+                </ul>
+            </div>
+        </div>
     </body>
 
 </html>
