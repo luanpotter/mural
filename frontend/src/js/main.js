@@ -114,7 +114,7 @@ window.jQuery(function ($) {
         fixCardFontColor(card);
     }
 
-    function loadMural(muralId) {
+    function loadMural(muralId, callback) {
         $('.mural-container').on('change', function () {
             fixWallFontColor(this);
             var color = getBackgroundColor(this);
@@ -142,7 +142,11 @@ window.jQuery(function ($) {
                 var id = post.data('post-id');
                 yawp(id).destroy();
                 post.remove();
-            });
+            });  
+        }).done(function() {
+            if (callback) {
+                callback();
+            }
         });
     }
 
@@ -165,13 +169,13 @@ window.jQuery(function ($) {
         $('#titulo-novo-mural').focus();
     }
 
-    function load() {
+    function load(callback) {
         var muralId = getMuralId();
         yawp(muralId).fetch(function (mural) {
             configuraElementosNovoPost(true);
             $('#titulo').html(mural.nome);
             $('.mural-container').css('background-color', mural.color);
-            loadMural(muralId);
+            loadMural(muralId, callback);
         }).fail(function () {
             novoMural(muralId);
         });
@@ -193,10 +197,11 @@ window.jQuery(function ($) {
     }
 
     if (permissions.current.canSee) {
-        load();
-    }
-    if (!permissions.current.canUseToolbar) {
-        $('.toolbar').remove();
+        load(function() {
+            if (!permissions.current.canUseToolbar) {
+                $('.toolbar').remove();
+            }
+        });
     }
     if (!permissions.current.canChangeColor) {
         $('.customizer').remove();
