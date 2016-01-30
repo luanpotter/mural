@@ -14,6 +14,9 @@ h1 {
   font-size: 65px;
 }
 
+.content {
+    min-height: 100%;
+}
 
 .card-content {
     width: 273px;
