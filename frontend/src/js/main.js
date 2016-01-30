@@ -83,7 +83,6 @@ window.jQuery(function ($) {
         fixCardFontColor(card);
     }
 
-
     function load() {
         var muralId = '/murais/mural-da-carol';
         yawp(muralId).fetch(function (mural) {

@@ -17,4 +17,5 @@ public class Mural {
 
 	String color;
 
+	String senha;
 }
