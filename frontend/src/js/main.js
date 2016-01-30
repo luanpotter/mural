@@ -2,9 +2,10 @@ window.jQuery = require('jquery');
 var doT = require('dot');
 var yawp = require('yawp-cli');
 var sanitize = require('google-caja-sanitizer').sanitize;
-var cookies = require('cookies-js');
+var cookies = require('js-cookie');
+var sha256 = require('js-sha256');
 
-cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+//cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 window.jQuery(function ($) {
 
@@ -108,7 +109,9 @@ window.jQuery(function ($) {
         });
 
         fixWallFontColor($('.mural-container'));
-        yawp('/posts').params({ 'mural' : muralId.replace('/murais/', '') }).list(function (posts) {
+        yawp('/posts').params({
+            'mural': muralId.replace('/murais/', '')
+        }).list(function (posts) {
             posts.forEach(createCard);
             $('.removeBtn').click(function () {
                 var post = $(this).closest('.post');
@@ -130,23 +133,44 @@ window.jQuery(function ($) {
     }
 
     function novoMural(muralId) {
+        cookies.remove('auth');
+
         $('#titulo').html('Novo Mural');
         configuraElementosNovoPost(false);
-        
+
         var novoMuralForm = $(novoMuralTemplateFnc());
         $('#mural').html(novoMuralForm);
         $('#titulo-novo-mural').focus();
+
+        $('#botao-novo-mural').click(function () {
+            var mural = {
+                id: muralId,
+                nome: $('#titulo-novo-mural').val(),
+                senha: sha256($('#senha').val())
+            };
+
+            yawp(muralId).create(mural).done(function () {
+                console.log('salvou');
+            });
+        });
     }
 
     function load() {
         var muralId = getMuralId();
-        yawp(muralId).fetch(function (mural) {
-            configuraElementosNovoPost(true);
-            $('#titulo').html(mural.nome);
-            $('.mural-container').css('background-color', mural.color);
-            loadMural(muralId);
-        }).fail(function () {
-            novoMural(muralId);
+        console.log('mid', muralId);
+        yawp(muralId).get('exists').done(function (exists) {
+            if (exists) {
+                yawp(muralId).fetch(function (mural) {
+                    configuraElementosNovoPost(true);
+                    $('#titulo').html(mural.nome);
+                    $('.mural-container').css('background-color', mural.color);
+                    loadMural(muralId);
+                }).fail(function () {
+                    console.log('senha invalida?');
+                });
+            } else {
+                novoMural(muralId);
+            }
         });
     }
 
