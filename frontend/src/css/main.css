@@ -14,6 +14,7 @@ h1 {
   font-size: 65px;
 }
 
+
 .card-content {
     width: 273px;
     min-height: 120px;
@@ -51,7 +52,6 @@ ul.bb-custom-grid li h3 {
 }
 
 /* custom */
-
 .post {
     height: 250px;
 }

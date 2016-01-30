@@ -1,24 +1,24 @@
 package io.mural.models.mural;
 
-import java.util.List;
-
-import javax.servlet.http.Cookie;
-
 import io.yawp.commons.http.HttpException;
 import io.yawp.commons.http.annotation.GET;
 import io.yawp.repository.IdRef;
 import io.yawp.repository.shields.Shield;
 
+import javax.servlet.http.Cookie;
+import java.util.List;
+
 public class MuralShield extends Shield<Mural> {
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void defaults() {
+        allow().where("senha", "=", getCookie().getValue()).facade(MuralFacade.class);
+    }
 
     @Override
     public void create(List<Mural> objects) {
         allow();
-    }
-
-    @Override
-    public void defaults() {
-        allow().where("senha", "=", getCookie().getValue());
     }
 
     @GET
@@ -35,6 +35,11 @@ public class MuralShield extends Shield<Mural> {
             }
         }
         throw new HttpException(401);
+    }
+
+    @Override
+    public void index(IdRef<?> parentId) {
+        allow(false);
     }
 
 }

@@ -9,6 +9,33 @@ var sha256 = require('js-sha256');
 
 window.jQuery(function ($) {
 
+    var permissions = {
+        OWNER: {
+            canSort: true,
+            canChangeColor: true,
+            canUseToolbar: true,
+            canPost: true,
+            canSee: true
+        },
+        READER: {
+            canSort: false,
+            canChangeColor: false,
+            canUseToolbar: false,
+            canPost: true,
+            canSee: true
+        },
+        NONE: {
+            canSort: false,
+            canChangeColor: false,
+            canUseToolbar: false,
+            canPost: false,
+            canSee: false
+        }
+
+    };
+
+    permissions.current = permissions.READER;
+
     var postTemplateFnc = doT.template($('#post-template').html());
     var textTemplateFnc = function (it) {
         return $(sanitize('<p>' + it.content + '</p>'));
@@ -88,7 +115,7 @@ window.jQuery(function ($) {
         fixCardFontColor(card);
     }
 
-    function loadMural(muralId) {
+    function loadMural(muralId, callback) {
         $('.mural-container').on('change', function () {
             fixWallFontColor(this);
             var color = getBackgroundColor(this);
@@ -119,6 +146,10 @@ window.jQuery(function ($) {
                 yawp(id).destroy();
                 post.remove();
             });
+        }).done(function () {
+            if (callback) {
+                callback();
+            }
         });
     }
 
@@ -155,7 +186,7 @@ window.jQuery(function ($) {
         });
     }
 
-    function load() {
+    function load(callback) {
         var muralId = getMuralId();
         console.log('mid', muralId);
         yawp(muralId).get('exists').done(function (exists) {
@@ -189,6 +220,20 @@ window.jQuery(function ($) {
         });
     }
 
-    load();
-    addSortEvent();
+    if (permissions.current.canSee) {
+        load(function () {
+            if (!permissions.current.canUseToolbar) {
+                $('.toolbar').remove();
+            }
+        });
+    }
+    if (!permissions.current.canChangeColor) {
+        $('.customizer').remove();
+    }
+    if (!permissions.current.canPost) {
+        $('#newPost').remove();
+    }
+    if (permissions.current.canSort) {
+        addSortEvent();
+    }
 });
