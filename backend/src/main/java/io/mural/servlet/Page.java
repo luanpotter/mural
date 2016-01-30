@@ -2,7 +2,17 @@ package io.mural.servlet;
 
 public enum Page {
 
-    POST {
+    HOME {
+        @Override
+        public String path() {
+            return "/static/index.html";
+        }
+    }, MURAL {
+        @Override
+        public String path() {
+            return "/static/mural.html";
+        }
+    }, POST {
         @Override
         public String path() {
             return "post.html";
@@ -12,15 +22,10 @@ public enum Page {
         public String path() {
             return "/static/404.html";
         }
-    }, HOME {
+    }, STATIC_CONTENT {
         @Override
         public String path() {
-            return "/static/index.html";
-        }
-    }, MURAL {
-        @Override
-        public String path() {
-            return "/static/mural.html";
+            return null;
         }
     };
 

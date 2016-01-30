@@ -9,36 +9,48 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static io.mural.servlet.Page.NOT_FOUND;
+import static io.mural.servlet.Page.STATIC_CONTENT;
+
 public class RouterServlet extends HttpServlet {
-
-    private static final String BASE_PATH = "/murais";
-
-    private static final int BASE_PATH_LENGTH = BASE_PATH.length();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        response(getPath(req.getRequestURI()), resp);
+        response(req.getRequestURI(), resp);
     }
 
-    private String getPath(String path) {
-        return path.substring(BASE_PATH_LENGTH);
-    }
+    private void response(String uri, HttpServletResponse resp) throws IOException {
+        String path = getPagePath(uri);
 
-    private void response(String path, HttpServletResponse resp) throws IOException {
-        Page page = routeToPage(path);
         resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html");
-        InputStream stream = getServletContext().getResourceAsStream(page.path());
-        if (stream == null) {
-            resp.setStatus(404);
-            return;
-        }
+        resp.setContentType(getContentType(path));
+        InputStream stream = getFileInputStream(path);
         IOUtils.copy(stream, resp.getOutputStream());
     }
 
+    private InputStream getFileInputStream(String path) {
+        InputStream stream = getServletContext().getResourceAsStream(path);
+        if (stream == null) {
+            stream = getServletContext().getResourceAsStream(NOT_FOUND.path());
+        }
+        return stream;
+    }
+
     private Page routeToPage(String path) {
-        Router router = new Router();
+        MuralRouter router = new MuralRouter();
         return router.route(path);
+    }
+
+    private String getPagePath(String uri) {
+        Page page = routeToPage(uri);
+        if (page == STATIC_CONTENT) {
+            return uri;
+        }
+        return page.path();
+    }
+
+    private String getContentType(String path) {
+        return MimeTypeUtils.probeMimeTypeForExtension(path);
     }
 
 }
