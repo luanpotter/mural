@@ -21,7 +21,7 @@ jQuery(function($) {
         var content = contentFnc({content: post.conteudo});
         
         var card = $(postTemplateFnc({title: post.titulo}));
-        $(card).find('.content').append($(content));
+        $(card).find('.card-content').append($(content));
         $(card).css('background-color', post.color);
         
         $('#mural').append(card);

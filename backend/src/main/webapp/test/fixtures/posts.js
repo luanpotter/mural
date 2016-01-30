@@ -24,5 +24,52 @@
         muralId: fx.mural('mural-da-carol').id
     });
 
+    fx.post('carol4', {
+        tipo: 'FOTO',
+        titulo: 'Foto legal',
+        color: '#5fa1e0',
+        conteudo: 'https://d13yacurqjgara.cloudfront.net/users/42865/screenshots/1955397/emo.png',
+        muralId: fx.mural('mural-da-carol').id
+    });
+
+    fx.post('carol5', {
+        tipo: 'FOTO',
+        titulo: 'Foto legal',
+        color: '#fb6964',
+        conteudo: 'https://d13yacurqjgara.cloudfront.net/users/42865/screenshots/1949712/gm.png',
+        muralId: fx.mural('mural-da-carol').id
+    });
+
+    fx.post('carol6', {
+        tipo: 'FOTO',
+        titulo: 'Foto legal',
+        color: '#eae7c4',
+        conteudo: 'https://d13yacurqjgara.cloudfront.net/users/42865/screenshots/1949710/gm2.png',
+        muralId: fx.mural('mural-da-carol').id
+    });
+
+    fx.post('carol7', {
+        tipo: 'FOTO',
+        titulo: 'Foto legal',
+        color: '#eae7c4',
+        conteudo: 'https://d13yacurqjgara.cloudfront.net/users/42865/screenshots/1949710/gm2.png',
+        muralId: fx.mural('mural-da-carol').id
+    });
+
+    fx.post('carol8', {
+        tipo: 'FOTO',
+        titulo: 'Foto legal',
+        color: '#fb6964',
+        conteudo: 'https://d13yacurqjgara.cloudfront.net/users/42865/screenshots/1949712/gm.png',
+        muralId: fx.mural('mural-da-carol').id
+    });
+
+    fx.post('carol9', {
+        tipo: 'FOTO',
+        titulo: 'Foto legal',
+        color: '#fb6964',
+        conteudo: 'https://d13yacurqjgara.cloudfront.net/users/42865/screenshots/1949712/gm.png',
+        muralId: fx.mural('mural-da-carol').id
+    });
 
 })(yawp.fixtures.lazy);

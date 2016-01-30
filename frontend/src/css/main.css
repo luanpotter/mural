@@ -32,4 +32,7 @@ footer {
   width: 99rem;
 }
 
-
+.card-content {
+    width: 273px;
+    min-height: 150px;
+}

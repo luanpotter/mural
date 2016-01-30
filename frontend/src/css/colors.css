@@ -390,7 +390,7 @@ button:focus {
 
 /* Set element that can be painted to overflow hidden */
 .paint-area {
-	overflow: hidden;
+/*	overflow: hidden;*/
 	position: relative;
 	-webkit-transition: background 0.2s, color 0.2s;
 	transition: background 0.2s, color 0.2s;
