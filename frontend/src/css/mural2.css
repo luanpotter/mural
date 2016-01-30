@@ -6,10 +6,6 @@ html {
     height: 100%;
 }
 
-.clearfix:after {
-    clear: both;
-}
-
 .container {
     height: 100%;
 }
@@ -33,9 +29,6 @@ html {
     padding: 0 0 0.6em 0.1em;
 }
 
-
-/* Demo Styles */
-
 ul.bb-custom-grid {
     list-style: none;
     margin: 0 auto 30px auto;
@@ -44,53 +37,16 @@ ul.bb-custom-grid {
     display: block;
 }
 
-
-/* Micro clearfix hack by Nicolas Gallagher http://nicolasgallagher.com/micro-clearfix-hack/ */
-
-ul.bb-custom-grid:after {
-    clear: both;
-}
-
-
-/* end clearfix hack */
-
 ul.bb-custom-grid li {
     float: left;
-    /*width: 300px;
-    height: 260px;*/
     padding: 10px 20px 30px 20px;
     background: #fff;
     position: relative;
     box-sizing: content-box;
     margin-bottom: 20px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-ul.bb-custom-grid li {
     margin-right: 10px;
     margin-left: 10px;
-}
-
-ul.bb-custom-grid li:before,
-ul.bb-custom-grid li:after {
-    content: '';
-    position: absolute;
-    z-index: -2;
-    bottom: 15px;
-    left: 10px;
-    width: 50%;
-    height: 20%;
-}
-
-ul.bb-custom-grid li:after {
-    right: 10px;
-    left: auto;
-    -webkit-transform: rotate(3deg);
-    transform: rotate(3deg);
-}
-
-ul.bb-custom-grid li a {
-    display: block;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 ul.bb-custom-grid li h3 {
@@ -102,23 +58,6 @@ ul.bb-custom-grid li h3 {
     font-size: 14px;
     line-height: 35px;
     letter-spacing: 1px;
-}
-
-ul.bb-custom-grid nav {
-    text-align: center;
-    margin-top: 12px;
-    padding-bottom: 5px;
-}
-
-ul.bb-custom-grid nav span {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #f0f0f0;
-    margin: 3px;
-    cursor: pointer;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 2px 1px rgba(255, 255, 255, 0.9);
 }
 
 /* custom */
