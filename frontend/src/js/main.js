@@ -5,8 +5,6 @@ var sanitize = require('google-caja-sanitizer').sanitize;
 var cookies = require('js-cookie');
 var sha256 = require('js-sha256');
 
-//cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
-
 window.jQuery(function ($) {
 
     var permissions = {
@@ -209,6 +207,9 @@ window.jQuery(function ($) {
                 }).fail(function () {
                     var loginMuralForm = $(loginMuralTemplateFnc());
                     $('#mural').html(loginMuralForm);
+                    if (cookies.get('auth')) {
+                        loginMuralForm.parent().find('#messages').text('Senha inválida...');
+                    }
                     $('#senha').focus();
 
                     $('#botao-logar').click(function () {
