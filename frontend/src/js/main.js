@@ -1,11 +1,14 @@
 window.jQuery = require('jquery');
 var doT = require('dot');
 var yawp = require('yawp-cli');
+var sanitize = require('google-caja-sanitizer').sanitize;
 
 window.jQuery(function ($) {
 
     var postTemplateFnc = doT.template($('#post-template').html());
-    var textTemplateFnc = doT.template($('#post-template-text').html());
+    var textTemplateFnc = function (it) {
+        return $(sanitize('<p>' + it.content + '</p>'));
+    };
     var videoTemplateFnc = doT.template($('#post-template-video').html());
     var pictureTemplateFnc = doT.template($('#post-template-picture').html());
     var novoMuralTemplateFnc = doT.template($('#novo-mural-template').html());
@@ -94,7 +97,6 @@ window.jQuery(function ($) {
             window.location.href += '/post';
         });
 
-        console.log($('.delete').length);
         $('.delete').on('click', function () {
             var post = $(this).closest('.post');
             var id = post.data('post-id');
@@ -108,10 +110,9 @@ window.jQuery(function ($) {
             $('.removeBtn').click(function () {
                 var post = $(this).closest('.post');
                 var id = post.data('post-id');
+                yawp(id).destroy();
                 post.remove();
-                yawp.destroy(id);
             });
-            $('.removeBtn').click();
         });
     }
 

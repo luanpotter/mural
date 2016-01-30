@@ -34,8 +34,10 @@
   },
   "dependencies": {
     "dot": "^1.0.3",
+    "google-caja-sanitizer": "^1.0.4",
     "interact.js": "^1.2.6",
     "jquery": "^2.2.0",
+    "js-sha256": "^0.3.0",
     "materialize-css": "^0.97.5",
     "trix": "^0.9.5",
     "yawp-cli": "^1.0.1"
