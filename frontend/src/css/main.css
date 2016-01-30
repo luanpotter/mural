@@ -85,6 +85,17 @@ img {
     bottom: 10px;
 }
 
+#newPost img {
+    cursor: pointer;
+}
+
+#newPost img:hover {
+    -webkit-transform: scale(1.1);
+  	-moz-transform: scale(1.1);
+  	-o-transform: scale(1.1);
+  	transform: scale(1.1);
+}
+
 .card-content p {
     font-family: Comic Sans, Comic Sans MS, cursive;
     font-size: 20px;
