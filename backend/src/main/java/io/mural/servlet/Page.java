@@ -15,12 +15,12 @@ public enum Page {
     }, HOME {
         @Override
         public String path() {
-            return "index.html";
+            return "/static/index.html";
         }
     }, MURAL {
         @Override
         public String path() {
-            return "mural.html";
+            return "/static/mural.html";
         }
     };
 
