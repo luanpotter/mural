@@ -11,20 +11,29 @@ window.jQuery(function ($) {
     var permissions = {
         OWNER: {
             canSort: true,
+            canChangeColor: true,
+            canUseToolbar: true,
             canPost: true,
             canSee: true
         },
         READER: {
             canSort: false,
+            canChangeColor: false,
+            canUseToolbar: false,
             canPost: true,
             canSee: true
         },
         NONE: {
             canSort: false,
+            canChangeColor: false,
+            canUseToolbar: false,
             canPost: false,
             canSee: false
         }
+        
     };
+    
+    permissions.current = permissions.READER;
 
     var postTemplateFnc = doT.template($('#post-template').html());
     var textTemplateFnc = function (it) {
@@ -183,6 +192,19 @@ window.jQuery(function ($) {
         });
     }
 
-    load();
-    addSortEvent();
+    if (permissions.current.canSee) {
+        load();
+    }
+    if (!permissions.current.canUseToolbar) {
+        $('.toolbar').remove();
+    }
+    if (!permissions.current.canChangeColor) {
+        $('.customizer').remove();
+    }
+    if (!permissions.current.canPost) {
+        $('#newPost').remove();
+    }
+    if (permissions.current.canSort) {
+        addSortEvent();
+    }
 });
