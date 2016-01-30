@@ -9,9 +9,21 @@
             <div class="post">
                 <a href="#">
                     <h2>{{! it.title}}</h2>
-                    <p>{{! it.content}}</p>
+                    <section class="content">{{! it.content}}</section>
                 </a>
             </div>
+        </script>
+        
+        <script id="post-template-text" type="text/x-dot-template">
+            <p>{{! it.content}}</p>
+        </script>
+        
+        <script id="post-template-video" type="text/x-dot-template">
+            <p>{{! it.content}}</p>
+        </script>
+        
+        <script id="post-template-picture" type="text/x-dot-template">
+            <p>{{! it.content}}</p>
         </script>
     </head>
 
