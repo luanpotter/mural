@@ -9,4 +9,6 @@ public interface MuralFacade {
 	public String getNome();
 
 	public String getColor();
+
+	public void setColor(String color);
 }

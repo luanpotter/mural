@@ -34,4 +34,9 @@ public class Mural implements MuralFacade {
 	public String getColor() {
 		return color;
 	}
+
+	@Override
+	public void setColor(String color) {
+		this.color = color;
+	}
 }
