@@ -57,7 +57,6 @@ window.jQuery(function ($) {
     }
 
     function createCard(post) {
-        console.log(post);
         var contentFnc = handlers[post.tipo];
 
         var content = $(contentFnc({
@@ -102,7 +101,6 @@ window.jQuery(function ($) {
             window.location.href += '/post';
         });
 
-        console.log($('.delete').length);
         $('.delete').on('click', function () {
             var post = $(this).closest('.post');
             var id = post.data('post-id');
