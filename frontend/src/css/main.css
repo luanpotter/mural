@@ -48,6 +48,11 @@ ul.bb-custom-grid li h3 {
 
 /* custom */
 
+.post {
+    height: 250px;
+}
+
 img {
     max-width: 273px;
+    max-height: 200px;
 }
