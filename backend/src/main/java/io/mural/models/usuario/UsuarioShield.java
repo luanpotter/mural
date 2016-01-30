@@ -1,13 +1,12 @@
 package io.mural.models.usuario;
 
+import java.util.List;
+
 import io.yawp.repository.shields.Shield;
 
 public class UsuarioShield extends Shield<Usuario> {
 
-    @Override
-    public void defaults() {
-        // TODO Auto-generated method stub
-        allow();
-    }
-
+	public void create(List<Usuario> objects) {
+		allow();
+	}
 }
