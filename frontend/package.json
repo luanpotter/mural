@@ -33,6 +33,7 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
+    "cookies-js": "^1.2.2",
     "dot": "^1.0.3",
     "google-caja-sanitizer": "^1.0.4",
     "interact.js": "^1.2.6",

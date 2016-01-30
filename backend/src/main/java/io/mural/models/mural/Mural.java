@@ -18,4 +18,8 @@ public class Mural {
 	String color;
 
 	String senha;
+
+	public boolean hasPermission(String value) {
+		return senha.equals(value);
+	}
 }

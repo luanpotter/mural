@@ -2,6 +2,9 @@ window.jQuery = require('jquery');
 var doT = require('dot');
 var yawp = require('yawp-cli');
 var sanitize = require('google-caja-sanitizer').sanitize;
+var cookies = require('cookies-js');
+
+cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 window.jQuery(function ($) {
 
@@ -105,7 +108,7 @@ window.jQuery(function ($) {
         });
 
         fixWallFontColor($('.mural-container'));
-        yawp('/posts').where('muralId', '=', muralId).list(function (posts) {
+        yawp('/posts').params({ 'mural' : muralId.replace('/murais/', '') }).list(function (posts) {
             posts.forEach(createCard);
             $('.removeBtn').click(function () {
                 var post = $(this).closest('.post');
