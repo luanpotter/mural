@@ -4,40 +4,31 @@ var yawp = require('yawp-cli');
 
 jQuery(function($) {
     
+    var postTemplateFnc = doT.template($('#post-template').html());
+    var textTemplateFnc = doT.template($('#post-template-text').html());
+    var videoTemplateFnc = doT.template($('#post-template-video').html());
+    var pictureTemplateFnc = doT.template($('#post-template-picture').html());
     
-   
-    function handleText() {
-        
-    }
-    
-    function handleVideo() {
-        
-    }
-    
-    function handlePicture() {
-        
-    }
-    
-     var handlers = {
-        'TEXTO' : handleText,
-        'VIDEO' : handleVideo,
-        'FOTO': handlePicture
+    var handlers = {
+        'TEXTO' : textTemplateFnc,
+        'VIDEO' : videoTemplateFnc,
+        'FOTO': pictureTemplateFnc
     };
     
-    function handlePost(post) {
-        var templateStr = $('#post-template').html();
-        var templateFnc = doT.template(templateStr);
-        var card = templateFnc({"title": "Olá", "content": post.conteudo});
-        var element = $(card);
+    function createCard(post) {
+        var contentFnc = handlers[post.tipo];
+        var content = contentFnc({content: post.conteudo});
         
-        $('#mural').append(element);
+        var card = postTemplateFnc({title: post.titulo, content: content});
+        return card;
     }
     
     
     function load() {
         yawp('/posts').where('muralId', '=', '/murais/mural-da-carol').list(function (posts) {
             posts.forEach(function(post) {
-                handlePost(post);
+                var card = createCard(post);
+                $('#mural').append($(card));
              });
         });
     }
