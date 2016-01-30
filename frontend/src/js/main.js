@@ -5,7 +5,7 @@ var sanitize = require('google-caja-sanitizer').sanitize;
 var cookies = require('js-cookie');
 var sha256 = require('js-sha256');
 
-cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+//cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 window.jQuery(function ($) {
 
@@ -166,6 +166,8 @@ window.jQuery(function ($) {
         $('.customizer').toggle(toggle);
         $('#newPost').toggle(toggle);
     }
+    
+    var load;
 
     function novoMural(muralId) {
         cookies.remove('auth');
@@ -178,19 +180,22 @@ window.jQuery(function ($) {
         $('#titulo-novo-mural').focus();
 
         $('#botao-novo-mural').click(function () {
+            var senha = sha256($('#senha').val());
             var mural = {
                 id: muralId,
                 nome: $('#titulo-novo-mural').val(),
-                senha: sha256($('#senha').val())
+                senha: senha
             };
 
             yawp(muralId).create(mural).done(function () {
                 console.log('salvou');
+                cookies.set('auth', senha);
+                load();
             });
         });
     }
 
-    function load(callback) {
+    load = function(callback) {
         var muralId = getMuralId();
         console.log('exists', muralId);
         yawp(muralId).get('exists').done(function (exists) {
@@ -216,7 +221,7 @@ window.jQuery(function ($) {
                 novoMural(muralId);
             }
         });
-    }
+    };
 
     function addSortEvent() {
         $(function () {
