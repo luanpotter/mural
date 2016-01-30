@@ -141,6 +141,7 @@ window.jQuery(function ($) {
         yawp('/posts').params({
             'mural': muralId.replace('/murais/', '')
         }).list(function (posts) {
+            console.log('xpto', posts);
             posts.forEach(createCard);
             $('.removeBtn').click(function () {
                 var post = $(this).closest('.post');
@@ -148,10 +149,10 @@ window.jQuery(function ($) {
                 yawp(id).destroy();
                 post.remove();
             });
-        }).done(function () {
+            
             if (callback) {
                 callback();
-            }
+            }                    
         });
     }
 
