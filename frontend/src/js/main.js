@@ -7,6 +7,24 @@ var cookies = require('cookies-js');
 cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 window.jQuery(function ($) {
+    
+    var permissions = {
+        OWNER: {
+            canSort: true,
+            canPost: true,
+            canSee: true
+        },
+        READER: {
+            canSort: false,
+            canPost: true,
+            canSee: true
+        },
+        NONE: {
+            canSort: false,
+            canPost: false,
+            canSee: false
+        }
+    };
 
     var postTemplateFnc = doT.template($('#post-template').html());
     var textTemplateFnc = function (it) {
