@@ -33,8 +33,9 @@ window.jQuery(function ($) {
         }
 
     };
+    
+    permissions.current = permissions.OWNER;
 
-    permissions.current = permissions.READER;
 
     var postTemplateFnc = doT.template($('#post-template').html());
     var textTemplateFnc = function (it) {
