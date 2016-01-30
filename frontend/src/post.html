@@ -5,7 +5,6 @@
         <script src="/static/js/post.js"></script>
         <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/colors.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/trix.css">
     </head>
 
     <body>
@@ -18,12 +17,11 @@
                         <div>Tipo:
                             <select id="tipo">
                                 <option>Texto</option>
-                                <option>Imagem</option>
+                                <option>Foto</option>
                                 <option>Vídeo</option>
                             </select>
                         </div>
-                        <div>Mensagem: <input type="hidden" id="conteudo">
-                        <trix-editor class="trix-content" input="post" trix-file-accept="preventDefault()"></trix-editor></div>
+                        <div>Mensagem: <textarea id="conteudo" placeholder="Sua mensagem..."></textarea></div>
                         <div>URL: <input type="text" id="url" placeholder="URL..."></input></div>
                         <div><button id="enviar">Enviar!</button> <button id="cancelar">Cancelar...</button></div>
                     </div>
