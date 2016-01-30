@@ -81,7 +81,11 @@ window.jQuery(function($) {
             var color = getBackgroundColor(this);
             yawp(muralId).patch({ color : color });
         });
-        
+
+        $('#newPost').on('click', function () {
+            window.location.href += '/post';
+        });
+
         fixWallFontColor($('.container'));
         yawp('/posts').where('muralId', '=', muralId).list(function (posts) {
             posts.forEach(createCard);

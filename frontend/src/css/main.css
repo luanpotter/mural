@@ -56,3 +56,9 @@ img {
     max-width: 273px;
     max-height: 200px;
 }
+
+#newPost {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
