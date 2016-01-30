@@ -165,12 +165,6 @@
 		}, 25);
 	}
 
-	function resetColors() {
-		[].slice.call(document.querySelectorAll('.paint-area')).forEach(function(el) {
-			el.style[classie.has(el, 'paint-area--text') ? 'color' : 'background-color'] = '';
-		});
-	}
-
 	init();
 
 })();
