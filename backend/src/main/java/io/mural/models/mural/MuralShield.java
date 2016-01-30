@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 
 import io.yawp.commons.http.HttpException;
+import io.yawp.repository.IdRef;
 import io.yawp.repository.shields.Shield;
 
 public class MuralShield extends Shield<Mural> {
@@ -15,8 +16,14 @@ public class MuralShield extends Shield<Mural> {
 	}
 
 	@Override
+	public void index(IdRef<?> parentId) {
+		allow(false);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
 	public void defaults() {
-		allow().where("senha", "=", getCookie().getValue());
+		allow().where("senha", "=", getCookie().getValue()).facade(MuralFacade.class);
 	}
 
 	public Cookie getCookie() {
