@@ -5,7 +5,7 @@ var sanitize = require('google-caja-sanitizer').sanitize;
 var cookies = require('js-cookie');
 var sha256 = require('js-sha256');
 
-//cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 window.jQuery(function ($) {
 
@@ -35,7 +35,6 @@ window.jQuery(function ($) {
     };
     
     permissions.current = permissions.OWNER;
-
 
     var postTemplateFnc = doT.template($('#post-template').html());
     var textTemplateFnc = function (it) {
@@ -90,6 +89,8 @@ window.jQuery(function ($) {
     }
 
     function createCard(post) {
+        console.log('create', post);
+        
         var contentFnc = handlers[post.tipo];
 
         var content = $(contentFnc({
@@ -140,6 +141,7 @@ window.jQuery(function ($) {
         yawp('/posts').params({
             'mural': muralId.replace('/murais/', '')
         }).list(function (posts) {
+            console.log('xpto', posts);
             posts.forEach(createCard);
             $('.removeBtn').click(function () {
                 var post = $(this).closest('.post');
@@ -147,10 +149,10 @@ window.jQuery(function ($) {
                 yawp(id).destroy();
                 post.remove();
             });
-        }).done(function () {
+            
             if (callback) {
                 callback();
-            }
+            }                    
         });
     }
 
@@ -189,13 +191,14 @@ window.jQuery(function ($) {
 
     function load(callback) {
         var muralId = getMuralId();
-        console.log('mid', muralId);
+        console.log('exists', muralId);
         yawp(muralId).get('exists').done(function (exists) {
             if (exists) {
                 yawp(muralId).fetch(function (mural) {
                     configuraElementosNovoPost(true);
                     $('#titulo').html(mural.nome);
                     $('.mural-container').css('background-color', mural.color);
+                    console.log('loading', muralId);
                     loadMural(muralId);
                 }).fail(function () {
                     console.log('senha invalida?');
