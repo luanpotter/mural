@@ -9,14 +9,6 @@
     font-style: normal;
 }
 
-*,
-*:after,
-*:before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 body,
 html {
     font-size: 100%;
@@ -220,78 +212,6 @@ a img {
 
 
 /* Demo Styles */
-
-.demo-1 body {
-    color: #87968e;
-    background: #fff2e3;
-}
-
-.demo-1 a {
-    color: #72b890;
-}
-
-.demo-1 .codrops-demos a {
-    background: #72b890;
-    color: #fff;
-}
-
-.demo-2 body {
-    color: #fff;
-    background: #c05d8e;
-}
-
-.demo-2 a {
-    color: #d38daf;
-}
-
-.demo-2 a:hover,
-.demo-2 a:active {
-    color: #fff;
-}
-
-.demo-2 .codrops-demos a {
-    background: #883b61;
-    color: #fff;
-}
-
-.demo-2 .codrops-top a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    color: #333;
-}
-
-.demo-3 body {
-    color: #87968e;
-    background: #fff2e3;
-}
-
-.demo-3 a {
-    color: #ea5381;
-}
-
-.demo-3 .codrops-demos a {
-    background: #ea5381;
-    color: #fff;
-}
-
-.demo-4 body {
-    color: #999;
-    background: #fff2e3;
-    overflow: hidden;
-}
-
-.demo-4 a {
-    color: #1baede;
-}
-
-.demo-4 a:hover,
-.demo-4 a:active {
-    opacity: 0.6;
-}
-
-.demo-4 .codrops-demos a {
-    background: #1baede;
-    color: #fff;
-}
 
 .demo-5 body {
     background: #fffbd6;
