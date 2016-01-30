@@ -5,8 +5,13 @@ import io.yawp.repository.query.QueryBuilder;
 
 public class PostDefaultSortHook extends Hook<Post> {
 
-    @Override
-    public void beforeQuery(QueryBuilder<Post> q) {
-        q.order("order");
-    }
+	@Override
+	public void beforeQuery(QueryBuilder<Post> q) {
+		q.order("order");
+	}
+
+	@Override
+	public void beforeSave(Post p) {
+		p.order = -System.currentTimeMillis();
+	}
 }

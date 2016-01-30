@@ -7,7 +7,7 @@ window.jQuery(function ($) {
 
     var postTemplateFnc = doT.template($('#post-template').html());
     var textTemplateFnc = function (it) {
-        return $(it.content);
+        return $(sanitize('<p>' + it.content + '</p>'));
     };
     var videoTemplateFnc = doT.template($('#post-template-video').html());
     var pictureTemplateFnc = doT.template($('#post-template-picture').html());
@@ -57,10 +57,11 @@ window.jQuery(function ($) {
     }
 
     function createCard(post) {
+        console.log(post);
         var contentFnc = handlers[post.tipo];
 
         var content = $(contentFnc({
-            content: sanitize('<p>' + post.conteudo + '</p>')
+            content: post.conteudo
         }));
 
         var card = $(postTemplateFnc({
