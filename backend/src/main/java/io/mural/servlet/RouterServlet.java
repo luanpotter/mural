@@ -23,18 +23,21 @@ public class RouterServlet extends HttpServlet {
         String path = getPagePath(uri);
 
         resp.setCharacterEncoding("UTF-8");
-        resp.setContentType(getContentType(path));
-        InputStream stream = getFileInputStream(path);
+        InputStream stream = getFileInputStream(path, resp);
         IOUtils.copy(stream, resp.getOutputStream());
     }
 
-    private InputStream getFileInputStream(String path) {
+    private InputStream getFileInputStream(String path, HttpServletResponse resp) {
         InputStream stream = getServletContext().getResourceAsStream(path);
         if (stream == null) {
             stream = getServletContext().getResourceAsStream(NOT_FOUND.path());
+            resp.setContentType("text/html");
+        } else {
+            resp.setContentType(getContentType(path));
         }
         return stream;
     }
+
 
     private Page routeToPage(String path) {
         MuralRouter router = new MuralRouter();
