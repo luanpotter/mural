@@ -105,9 +105,6 @@
 				classie.remove(event.target, 'paint-area--highlight');
 			}
 		});
-
-		// reset colors
-		document.querySelector('button.reset-button').addEventListener('click', resetColors);
 	}
 
 	function paintArea(ev, el, color) {
