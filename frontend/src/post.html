@@ -3,8 +3,17 @@
     <head>
         <title>Mural</title>
         <script src="/static/js/post.js"></script>
+        <script src="/static/js/lib/materialize.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('select').material_select();
+            });
+        </script>
+        <script src="/static/js/lib/trix.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/post.css" />
         <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/colors.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/materialize.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/trix.css" />
     </head>
 
     <body>
@@ -13,17 +22,26 @@
                 <div class="main clearfix">
                     <h1>Mural da Carol - Novo Post</h1>
                     <div class="main clearfix">
-                        <div>Nome: <input type="text" id="nome" placeholder="Seu nome" /></div>
-                        <div>Tipo:
+                        <div><input type="text" id="titulo" placeholder="Título" /></div>
+                        <div><input type="text" id="nome" placeholder="Seu nome" /></div>
+                        <div>
                             <select id="tipo">
-                                <option>Texto</option>
-                                <option>Foto</option>
-                                <option>Vídeo</option>
+                                <option value="" disabled selected>-- Tipo --</option>
+                                <option value="TEXTO">Texto</option>
+                                <option value="FOTO">Imagem</option>
+                                <option value="VIDEO">Vídeo</option>
                             </select>
                         </div>
-                        <div>Mensagem: <textarea id="conteudo" placeholder="Sua mensagem..."></textarea></div>
-                        <div>URL: <input type="text" id="url" placeholder="URL..."></input></div>
-                        <div><button id="enviar">Enviar!</button> <button id="cancelar">Cancelar...</button></div>
+                        <div>
+                            <input type="hidden" id="conteudo"></input>
+                            <trix-editor class="trix-content" input="conteudo" trix-file-accept="preventDefault()"></trix-editor>
+                        </div>
+                        <div><input type="text" id="url" placeholder="URL"></input></div>
+                        <hr />
+                        <div>
+                            <a id="enviar" class="waves-effect waves-light btn">Enviar!</a>
+                            <a id="cancelar" class="waves-effect waves-light btn">Cancelar...</a>
+                        </div>
                     </div>
                 </div>
             </div>

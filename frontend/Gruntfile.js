@@ -1,5 +1,7 @@
 module.exports = function (grunt) {
 
+	var unbrowserifiableLibs = ['lib/materialize.js', 'lib/trix.js'];
+
 	var pkg = grunt.file.readJSON('package.json');
 
 	var fileMaps = {
@@ -11,7 +13,9 @@ module.exports = function (grunt) {
 	}, ['**/*.js']);
 	for (var i = 0; i < files.length; i++) {
 		file = files[i];
-		fileMaps.browserify['build/dev/js/' + file] = 'src/js/' + file;
+		if (unbrowserifiableLibs.indexOf(file) === -1) {
+			fileMaps.browserify['build/dev/js/' + file] = 'src/js/' + file;
+		}
 		fileMaps.uglify['build/prod/js/' + file] = 'build/dev/js/' + file;
 	}
 
@@ -63,6 +67,14 @@ module.exports = function (grunt) {
 					src: ['**', '!js/*.js'],
 					dest: 'build/prod/'
 				}]
+			},
+			unbrowserifiableLibs : {
+				files: [{
+					expand: true,
+					cwd: 'src/js/',
+					src: unbrowserifiableLibs,
+					dest: 'build/dev/js/'
+				}]
 			}
 		},
 
@@ -106,7 +118,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', ['jshint', 'mochaTest']);
 	grunt.registerTask('test-cont', ['test', 'watch']);
 
-	grunt.registerTask('dev', ['clean', 'test', 'mkdir:dev', 'copy:main', 'browserify']);
+	grunt.registerTask('dev', ['clean', 'test', 'mkdir:dev', 'copy:main', 'browserify', 'copy:unbrowserifiableLibs']);
 	grunt.registerTask('prod', ['default', 'mkdir:prod', 'copy:prod', 'uglify']);
 	grunt.registerTask('default', ['dev']);
 };

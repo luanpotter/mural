@@ -1,13 +1,18 @@
-window.jQuery = require('jquery');
+window.$ = require('jquery');
 var yawp = require('yawp-cli');
 
-window.jQuery(function($) {
+
+window.$(function($) {
     var voltar = function () {
         window.location.href = window.location.href.substring(0, window.location.href.length - '/post'.length);
     };
 
     $('#tipo').on('change', function () {
-        var texto = $(this).val() === 'Texto';
+        if ($(this).val() === null) {
+            $('#conteudo, #url').closest('div').hide();
+            return;
+        }
+        var texto = $(this).val() === 'TEXTO';
         $('#conteudo').closest('div').toggle(texto);
         $('#url').closest('div').toggle(!texto);
     }).trigger('change');
@@ -19,11 +24,14 @@ window.jQuery(function($) {
     $('#enviar').on('click', function () {
         yawp('/posts').create({
             muralId : '/murais/mural-da-carol',
-            titulo : $('#nome').val(),
-            tipo : $('#tipo').val().toUpperCase(),
-            conteudo : $('#tipo').val() === 'Texto' ? $('#conteudo').val() : $('#url').val()
+            nome : $('#nome').val(),
+            titulo : $('#titulo').val(),
+            tipo : $('#tipo').val(),
+            conteudo : $('#tipo').val() === 'TEXTO' ? $('#conteudo').val() : $('#url').val()
         }).done(function () {
             voltar();
         });
     });
 });
+
+

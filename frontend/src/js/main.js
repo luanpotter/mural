@@ -1,11 +1,14 @@
 window.jQuery = require('jquery');
 var doT = require('dot');
 var yawp = require('yawp-cli');
+var sanitize = require('google-caja-sanitizer').sanitize;
 
 window.jQuery(function ($) {
 
     var postTemplateFnc = doT.template($('#post-template').html());
-    var textTemplateFnc = doT.template($('#post-template-text').html());
+    var textTemplateFnc = function (it) {
+        return $(it.content);
+    };
     var videoTemplateFnc = doT.template($('#post-template-video').html());
     var pictureTemplateFnc = doT.template($('#post-template-picture').html());
 
@@ -57,7 +60,7 @@ window.jQuery(function ($) {
         var contentFnc = handlers[post.tipo];
 
         var content = $(contentFnc({
-            content: post.conteudo
+            content: sanitize('<p>' + post.conteudo + '</p>')
         }));
 
         var card = $(postTemplateFnc({
@@ -96,6 +99,14 @@ window.jQuery(function ($) {
 
         $('#newPost').on('click', function () {
             window.location.href += '/post';
+        });
+
+        console.log($('.delete').length);
+        $('.delete').on('click', function () {
+            var post = $(this).closest('.post');
+            var id = post.data('post-id');
+            post.remove();
+            yawp.destroy(id);
         });
 
         fixWallFontColor($('.container'));
