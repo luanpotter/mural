@@ -43,6 +43,7 @@ window.jQuery(function ($) {
     var videoTemplateFnc = doT.template($('#post-template-video').html());
     var pictureTemplateFnc = doT.template($('#post-template-picture').html());
     var novoMuralTemplateFnc = doT.template($('#novo-mural-template').html());
+    var loginMuralTemplateFnc = doT.template($('#login-mural-template').html());
 
     var handlers = {
         'TEXTO': textTemplateFnc,
@@ -149,7 +150,7 @@ window.jQuery(function ($) {
                 yawp(id).destroy();
                 post.remove();
             });
-            
+
             if (callback) {
                 callback();
             }                    
@@ -201,7 +202,15 @@ window.jQuery(function ($) {
                     console.log('loading', muralId);
                     loadMural(muralId);
                 }).fail(function () {
-                    console.log('senha invalida?');
+                    var loginMuralForm = $(loginMuralTemplateFnc());
+                    $('#mural').html(loginMuralForm);
+                    $('#senha').focus();
+
+                    $('#botao-logar').click(function () {
+                        cookies.set('auth', sha256($('#senha').val()));
+                        $('#mural').html('');
+                        load(callback);
+                    });
                 });
             } else {
                 novoMural(muralId);
