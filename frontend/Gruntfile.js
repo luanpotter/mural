@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 	};
 	var file, files = grunt.file.expand({
 		cwd: 'src/js'
-	}, ['*.js']);
+	}, ['**/*.js']);
 	for (var i = 0; i < files.length; i++) {
 		file = files[i];
 		fileMaps.browserify['build/dev/js/' + file] = 'src/js/' + file;
