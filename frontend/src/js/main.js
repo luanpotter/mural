@@ -41,7 +41,15 @@ window.jQuery(function($) {
     
     
     function load() {
-        yawp('/posts').where('muralId', '=', '/murais/mural-da-carol').list(function (posts) {
+        var muralId = '/murais/mural-da-carol';
+        yawp(muralId).fetch(function (mural) {
+            $('.container').css('background-color', mural.color);
+        });
+        $('.container').on('change', function () {
+            var color = rgb2hex($(this).css('background-color'));
+            yawp(muralId).patch({ color : color });
+        });
+        yawp('/posts').where('muralId', '=', muralId).list(function (posts) {
             posts.forEach(createCard);
         });
     }
