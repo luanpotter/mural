@@ -55,6 +55,7 @@ window.jQuery(function ($) {
 
     function createCard(post) {
         var contentFnc = handlers[post.tipo];
+
         var content = $(contentFnc({
             content: post.conteudo
         }));
@@ -63,6 +64,7 @@ window.jQuery(function ($) {
             title: post.titulo,
             id: post.id
         }));
+
         card.find('.card-content').append(content);
         card.css('background-color', post.color);
 
@@ -99,6 +101,13 @@ window.jQuery(function ($) {
         fixWallFontColor($('.container'));
         yawp('/posts').where('muralId', '=', muralId).list(function (posts) {
             posts.forEach(createCard);
+            $('.removeBtn').click(function() {
+                var post = $(this).closest('.post');
+                var id = post.data('post-id');
+                post.remove();
+                yawp.destroy(id);
+            });
+            $('.removeBtn').click();
         });
     }
 
