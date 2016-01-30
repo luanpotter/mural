@@ -56,7 +56,7 @@ ul.bb-custom-grid li h3 {
     height: 250px;
 }
 
-.post:hover .toolbar {
+.post:hover .toolbar, .post:focus .toolbar {
     display: inherit;
 }
 
