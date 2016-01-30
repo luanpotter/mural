@@ -20,18 +20,6 @@ h1 {
   text-align: center;
 }
 
-header {
-  background-color: #739473;
-  height: 4rem; 
-  width: 99rem;
-}
-
-footer {
-  background-color: #739473;
-  height: 4rem;
-  width: 99rem;
-}
-
 .card-content {
     width: 273px;
     min-height: 150px;
