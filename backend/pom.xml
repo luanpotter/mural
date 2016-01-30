@@ -12,7 +12,7 @@
         <yawp.version>1.4.2</yawp.version>
         <yawp.package>io.mural</yawp.package>
         <appengine.app.version>1</appengine.app.version>
-        <appengine.target.version>1.9.22</appengine.target.version>
+        <appengine.target.version>1.9.25</appengine.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
