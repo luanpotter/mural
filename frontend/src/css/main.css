@@ -56,10 +56,28 @@ ul.bb-custom-grid li h3 {
     height: 250px;
 }
 
+.post:hover .toolbar {
+    display: inherit;
+}
+
+.post .toolbar {
+    float: right;
+    display: none;
+}
+
+.post .toolbar img {
+    cursor: pointer;
+}
+
 img {
     max-width: 273px;
     max-height: 200px;
 }
+
+#newPost {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
 
 .card-content p {
     font-family: Comic Sans, Comic Sans MS, cursive;

@@ -15,7 +15,7 @@ public enum Page {
     }, POST {
         @Override
         public String path() {
-            return "post.html";
+            return "/static/post.html";
         }
     }, NOT_FOUND {
         @Override

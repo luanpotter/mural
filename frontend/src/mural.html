@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/colors.css" />
     <script id="post-template" type="text/x-dot-template">
-        <li class="post paint-area" data-post-id="{{! it.id }}">
+        <li class="post paint-area">
+            <div class="toolbar"><img src="/static/images/delete100.png"></div>
             <h3>{{! it.title}}</h3>
             <div class="bb-bookblock card-content" />
         </li>
@@ -31,6 +32,9 @@
                     <ul class="bb-custom-grid" id="mural">
                     </ul>
                 </div>
+            </div>
+            <div id="newPost">
+                <img src="/static/images/add.png" />
             </div>
         </div>
     </div>
