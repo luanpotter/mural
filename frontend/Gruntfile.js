@@ -11,7 +11,9 @@ module.exports = function (grunt) {
 	}, ['**/*.js']);
 	for (var i = 0; i < files.length; i++) {
 		file = files[i];
-		fileMaps.browserify['build/dev/js/' + file] = 'src/js/' + file;
+		if (file !== 'lib/materialize.js') {
+			fileMaps.browserify['build/dev/js/' + file] = 'src/js/' + file;
+		}
 		fileMaps.uglify['build/prod/js/' + file] = 'build/dev/js/' + file;
 	}
 
@@ -63,6 +65,12 @@ module.exports = function (grunt) {
 					src: ['**', '!js/*.js'],
 					dest: 'build/prod/'
 				}]
+			},
+			materialize : {
+				files: [{
+					src: ['src/js/lib/materialize.js'],
+					dest: 'build/dev/js/lib/materialize.js'
+				}]
 			}
 		},
 
@@ -106,7 +114,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('test', ['jshint', 'mochaTest']);
 	grunt.registerTask('test-cont', ['test', 'watch']);
 
-	grunt.registerTask('dev', ['clean', 'test', 'mkdir:dev', 'copy:main', 'browserify']);
+	grunt.registerTask('dev', ['clean', 'test', 'mkdir:dev', 'copy:main', 'browserify', 'copy:materialize']);
 	grunt.registerTask('prod', ['default', 'mkdir:prod', 'copy:prod', 'uglify']);
 	grunt.registerTask('default', ['dev']);
 };

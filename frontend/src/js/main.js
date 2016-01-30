@@ -98,6 +98,14 @@ window.jQuery(function ($) {
             window.location.href += '/post';
         });
 
+        console.log($('.delete').length);
+        $('.delete').on('click', function () {
+            var post = $(this).closest('.post');
+            var id = post.data('post-id');
+            post.remove();
+            yawp.destroy(id);
+        });
+
         fixWallFontColor($('.container'));
         yawp('/posts').where('muralId', '=', muralId).list(function (posts) {
             posts.forEach(createCard);

@@ -1,7 +1,8 @@
-window.jQuery = require('jquery');
+window.$ = require('jquery');
 var yawp = require('yawp-cli');
 
-window.jQuery(function($) {
+
+window.$(function($) {
     var voltar = function () {
         window.location.href = window.location.href.substring(0, window.location.href.length - '/post'.length);
     };
@@ -27,3 +28,5 @@ window.jQuery(function($) {
         });
     });
 });
+
+
