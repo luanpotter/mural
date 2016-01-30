@@ -34,8 +34,19 @@ window.jQuery(function($) {
         return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
     }
     
-    function fixFontColor(el) {
-        var color = rgb2hex($(el).css('background-color'));
+    function getBackgroundColor(el) {
+        return rgb2hex($(el).css('background-color'));
+    }
+    
+    function fixWallFontColor(el) {
+        var color = getBackgroundColor(el);
+        var textcolor = textColors[color];
+        $(el).css('color', textcolor);
+        $(el).find('h1').css('color', textcolor);
+    }
+    
+     function fixCardFontColor(el) {
+        var color = getBackgroundColor(el);
         var textcolor = textColors[color];
         $(el).css('color', textcolor);
         $(el).find('h3').css('color', textcolor);
@@ -50,13 +61,13 @@ window.jQuery(function($) {
         card.css('background-color', post.color);
         
         card.on('change', function () {
-            fixFontColor(this);
-            var color = rgb2hex($(this).css('background-color'));
+            fixCardFontColor(this);
+            var color = getBackgroundColor(this);
             yawp(post.id).patch({ color : color });
         });
         $('#mural').append(card);
         
-        fixFontColor(card);
+        fixCardFontColor(card);
     }
     
     
@@ -66,7 +77,8 @@ window.jQuery(function($) {
             $('.container').css('background-color', mural.color);
         });
         $('.container').on('change', function () {
-            var color = rgb2hex($(this).css('background-color'));
+            fixWallFontColor(this);
+            var color = getBackgroundColor(this);
             yawp(muralId).patch({ color : color });
         });
         yawp('/posts').where('muralId', '=', muralId).list(function (posts) {
@@ -74,6 +86,6 @@ window.jQuery(function($) {
         });
     }
     
-    
+    fixWallFontColor($('.container'));
     load();
 });
