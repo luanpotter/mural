@@ -22,6 +22,8 @@ public class Post {
 
 	Tipo tipo;
 
+	String color;
+
 	@Text
 	String conteudo;
 
