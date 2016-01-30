@@ -87,7 +87,7 @@ module.exports = function (grunt) {
 		watch: {
 			js: {
 				files: ['package.json', 'lint-options.json', 'Gruntfile.js', 'src/**/*'],
-				tasks: ['test']
+				tasks: ['prod']
 			}
 		}
 
