@@ -8,9 +8,11 @@ import io.yawp.repository.annotations.Id;
 @Endpoint(path = "/murais")
 public class Mural {
 
-    @Id
-    IdRef<Mural> id;
+	@Id
+	IdRef<Mural> id;
 
-    IdRef<Usuario> usuarioId;
+	IdRef<Usuario> usuarioId;
+
+	String nome;
 
 }
