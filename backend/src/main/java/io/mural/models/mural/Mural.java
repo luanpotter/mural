@@ -15,4 +15,6 @@ public class Mural {
 
 	String nome;
 
+	String color;
+
 }

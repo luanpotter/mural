@@ -10,6 +10,8 @@
  */
 (function() {
 
+	var interact = require('interact.js');
+
 	var docElem = window.document.documentElement,
 		// transition end event name
 		transEndEventNames = { 'WebkitTransition': 'webkitTransitionEnd', 'MozTransition': 'transitionend', 'OTransition': 'oTransitionEnd', 'msTransition': 'MSTransitionEnd', 'transition': 'transitionend' },
@@ -156,6 +158,7 @@
 					el.style.backgroundColor = color;
 					// remove SVG element
 					el.removeChild(dummy);
+					window.jQuery(el).trigger('change');
 
 					setTimeout(function() { classie.remove(el, 'paint--active'); }, 25);
 				};
