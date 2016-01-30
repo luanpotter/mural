@@ -4,21 +4,23 @@ import io.mural.models.mural.Mural;
 import io.yawp.repository.IdRef;
 import io.yawp.repository.annotations.Endpoint;
 import io.yawp.repository.annotations.Id;
+import io.yawp.repository.annotations.Index;
 import io.yawp.repository.annotations.Text;
 
 @Endpoint(path = "/posts")
 public class Post {
 
-    @Id
-    IdRef<Post> id;
+	@Id
+	IdRef<Post> id;
 
-    IdRef<Mural> muralId;
+	@Index
+	IdRef<Mural> muralId;
 
-    String nome;
+	String nome;
 
-    Tipo tipo;
+	Tipo tipo;
 
-    @Text
-    String conteudo;
-    
+	@Text
+	String conteudo;
+
 }
