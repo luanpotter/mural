@@ -105,15 +105,11 @@ window.jQuery(function ($) {
     function addSortEvent() {
         $(function () {
             $('#mural').sortable({
-                onEnd: function ( /**Event*/ evt) {
-                    var item1 = $(evt.item).data('post-id');
-                    var item2 = $($('.post')[evt.oldIndex]).data('post-id');
-
-                    yawp(item1).patch({
-                        order: evt.newIndex
-                    }).done(function () {
-                        yawp(item2).patch({
-                            order: evt.oldIndex
+                onEnd: function (evt) {
+                    $('.post').each(function (i, el) {
+                        var id = $(el).data('post-id');
+                        yawp(id).patch({
+                            order: i
                         });
                     });
                 }
