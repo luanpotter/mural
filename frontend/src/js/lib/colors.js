@@ -146,6 +146,7 @@
 					if( ev.target != this ) return;
 					this.removeEventListener( transEndEventName, onEndTransCallbackFn );
 					classie.remove(el, 'paint--active');
+                    window.jQuery(el).trigger('change');
 				};
 
 				el.addEventListener(transEndEventName, onEndTransCallbackFn);

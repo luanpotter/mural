@@ -14,6 +14,17 @@ window.jQuery(function($) {
         'VIDEO' : videoTemplateFnc,
         'FOTO': pictureTemplateFnc
     };
+    
+    var textColors = {
+        '#333333' : '#fff',
+        '#f0f0f0' : '#555',
+        '#c0c3d5' : '#333',
+        '#5FA1E0' : '#777',
+        '#c1d5c0' : '#888',
+        '#47AE73' : '#fff',
+        '#eae7c4' : '#000',
+        '#FB6964' : '#000'
+    };
 
     function rgb2hex(rgb) {
         rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
@@ -21,6 +32,13 @@ window.jQuery(function($) {
             return ("0" + parseInt(x).toString(16)).slice(-2);
         }
         return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+    }
+    
+    function fixFontColor(el) {
+        var color = rgb2hex($(el).css('background-color'));
+        var textcolor = textColors[color];
+        $(el).css('color', textcolor);
+        $(el).find('h3').css('color', textcolor);
     }
 
     function createCard(post) {
@@ -30,12 +48,15 @@ window.jQuery(function($) {
         var card = $(postTemplateFnc({title: post.titulo}));
         card.find('.card-content').append(content);
         card.css('background-color', post.color);
+        
         card.on('change', function () {
+            fixFontColor(this);
             var color = rgb2hex($(this).css('background-color'));
             yawp(post.id).patch({ color : color });
         });
         $('#mural').append(card);
-        return card;
+        
+        fixFontColor(card);
     }
     
     
