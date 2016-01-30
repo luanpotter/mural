@@ -104,10 +104,9 @@ window.jQuery(function ($) {
             $('.removeBtn').click(function() {
                 var post = $(this).closest('.post');
                 var id = post.data('post-id');
+                yawp(id).destroy();
                 post.remove();
-                yawp.destroy(id);
             });
-            $('.removeBtn').click();
         });
     }
 
