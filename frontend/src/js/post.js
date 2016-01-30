@@ -8,7 +8,11 @@ window.$(function($) {
     };
 
     $('#tipo').on('change', function () {
-        var texto = $(this).val() === 'Texto';
+        if ($(this).val() === null) {
+            $('#conteudo, #url').closest('div').hide();
+            return;
+        }
+        var texto = $(this).val() === 'TEXTO';
         $('#conteudo').closest('div').toggle(texto);
         $('#url').closest('div').toggle(!texto);
     }).trigger('change');
@@ -22,8 +26,8 @@ window.$(function($) {
             muralId : '/murais/mural-da-carol',
             nome : $('#nome').val(),
             titulo : $('#titulo').val(),
-            tipo : $('#tipo').val().toUpperCase(),
-            conteudo : $('#tipo').val() === 'Texto' ? $('#conteudo').val() : $('#url').val()
+            tipo : $('#tipo').val(),
+            conteudo : $('#tipo').val() === 'TEXTO' ? $('#conteudo').val() : $('#url').val()
         }).done(function () {
             voltar();
         });
