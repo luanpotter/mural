@@ -5,7 +5,7 @@ var sanitize = require('google-caja-sanitizer').sanitize;
 var cookies = require('js-cookie');
 var sha256 = require('js-sha256');
 
-//cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
+cookies.set('auth', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3');
 
 window.jQuery(function ($) {
 
@@ -34,7 +34,7 @@ window.jQuery(function ($) {
 
     };
 
-    permissions.current = permissions.READER;
+    permissions.current = permissions.OWNER;
 
     var postTemplateFnc = doT.template($('#post-template').html());
     var textTemplateFnc = function (it) {
