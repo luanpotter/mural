@@ -188,6 +188,7 @@ window.jQuery(function ($) {
             yawp(muralId).create(mural).done(function () {
                 console.log('salvou');
                 cookies.set('auth', senha);
+                $('#mural').html('');
                 load();
             });
         });
@@ -195,8 +196,8 @@ window.jQuery(function ($) {
 
     load = function(callback) {
         var muralId = getMuralId();
-        console.log('exists', muralId);
         yawp(muralId).get('exists').done(function (exists) {
+            console.log('exists', muralId, exists);
             if (exists) {
                 yawp(muralId).fetch(function (mural) {
                     configuraElementosNovoPost(true);
@@ -206,6 +207,7 @@ window.jQuery(function ($) {
                     $('#mural').html('');
                     loadMural(muralId);
                 }).fail(function () {
+                    $('#titulo').html('Acessar Mural');
                     var loginMuralForm = $(loginMuralTemplateFnc());
                     $('#mural').html(loginMuralForm);
                     if (cookies.get('auth')) {

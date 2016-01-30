@@ -29,9 +29,11 @@ public class MuralShield extends Shield<Mural> {
     public Cookie getCookie() {
         Cookie[] cookies = requestContext.req() != null ? requestContext.req().getCookies() : new Cookie[]{};
 
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("auth")) {
-                return cookie;
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("auth")) {
+                    return cookie;
+                }
             }
         }
         throw new HttpException(401);
