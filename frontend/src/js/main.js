@@ -89,6 +89,8 @@ window.jQuery(function ($) {
     }
 
     function createCard(post) {
+        console.log('create', post);
+        
         var contentFnc = handlers[post.tipo];
 
         var content = $(contentFnc({
@@ -188,13 +190,14 @@ window.jQuery(function ($) {
 
     function load(callback) {
         var muralId = getMuralId();
-        console.log('mid', muralId);
+        console.log('exists', muralId);
         yawp(muralId).get('exists').done(function (exists) {
             if (exists) {
                 yawp(muralId).fetch(function (mural) {
                     configuraElementosNovoPost(true);
                     $('#titulo').html(mural.nome);
                     $('.mural-container').css('background-color', mural.color);
+                    console.log('loading', muralId);
                     loadMural(muralId);
                 }).fail(function () {
                     console.log('senha invalida?');
