@@ -31,7 +31,7 @@ window.jQuery(function ($) {
         }
 
     };
-    
+
     permissions.current = permissions.OWNER;
 
     var postTemplateFnc = doT.template($('#post-template').html());
@@ -89,7 +89,7 @@ window.jQuery(function ($) {
 
     function createCard(post) {
         console.log('create', post);
-        
+
         var contentFnc = handlers[post.tipo];
 
         var content = $(contentFnc({
@@ -164,7 +164,7 @@ window.jQuery(function ($) {
         $('.customizer').toggle(toggle);
         $('#newPost').toggle(toggle);
     }
-    
+
     var load;
 
     function novoMural(muralId) {
@@ -185,7 +185,7 @@ window.jQuery(function ($) {
                 senha: senha
             };
 
-            yawp(muralId).create(mural).done(function () {
+            yawp(muralId).create(mural).then(function () {
                 console.log('salvou');
                 cookies.set('auth', senha);
                 $('#mural').html('');
@@ -196,7 +196,7 @@ window.jQuery(function ($) {
 
     load = function(callback) {
         var muralId = getMuralId();
-        yawp(muralId).get('exists').done(function (exists) {
+        yawp(muralId).get('exists').then(function (exists) {
             console.log('exists', muralId, exists);
             if (exists) {
                 yawp(muralId).fetch(function (mural) {
@@ -206,7 +206,7 @@ window.jQuery(function ($) {
                     console.log('loading', muralId);
                     $('#mural').html('');
                     loadMural(muralId);
-                }).fail(function () {
+                }).catch(function () {
                     $('#titulo').html('Acessar Mural');
                     var loginMuralForm = $(loginMuralTemplateFnc());
                     $('#mural').html(loginMuralForm);

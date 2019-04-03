@@ -32,7 +32,7 @@ window.$(function($) {
             titulo : $('#titulo').val(),
             tipo : $('#tipo').val(),
             conteudo : $('#tipo').val() === 'TEXTO' ? $('#conteudo').val() : $('#url').val()
-        }).done(function () {
+        }).then(function () {
             voltar();
         });
     });
