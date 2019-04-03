@@ -1,6 +1,6 @@
 package io.mural.servlet;
 
-import com.google.appengine.repackaged.com.google.api.client.util.IOUtils;
+import com.google.api.client.util.IOUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

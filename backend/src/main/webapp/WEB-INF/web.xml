@@ -36,15 +36,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>DeleteAllServlet</servlet-name>
-        <servlet-class>io.mural.servlet.DeleteAllServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteAllServlet</servlet-name>
-        <url-pattern>/fixtures/delete_all</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>RouterServlet</servlet-name>
         <servlet-class>io.mural.servlet.RouterServlet</servlet-class>
     </servlet>

@@ -9,10 +9,10 @@
     <packaging>war</packaging>
 
     <properties>
-        <yawp.version>1.4.2</yawp.version>
+        <yawp.version>1.6.19</yawp.version>
         <yawp.package>io.mural</yawp.package>
         <appengine.app.version>1</appengine.app.version>
-        <appengine.target.version>1.9.25</appengine.target.version>
+        <appengine.target.version>1.9.57</appengine.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -44,7 +44,8 @@
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-stubs</artifactId>
-            <version>1.9.25</version>
+            <version>${appengine.target.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -61,8 +62,8 @@
                 <version>2.5.1</version>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
 

@@ -1,6 +1,8 @@
 # nosso-mural
 
-Esse é um Mural feito para uma instituição. Você pode criar seu mural e qualquer pessoa com acesso pode criar mensagens para você, contendo texto, imagens ou vídeos.
+nosso-mural is a mural (message board) made for an institution.
+
+You can create your own mural (message board) and anyone with access can add messages to you, including text, images, video.
 
 ## setup
 
@@ -35,3 +37,9 @@ It is deployed via appspot, so you can access it here:
 > https://nosso-mural.appspot.com
 
 Don't forget to postpend the id of the mural desired.
+
+To deploy a new version, build everything as per instructed on setup and then inside the backend folder run:
+
+```bash
+mvn appengine:update
+```
